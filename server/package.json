@@ -1,0 +1,32 @@
+{
+  "name": "invesmart-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prosty serwer Node.js/Express dla InveSmart",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.14.4",
+    "yahoo-finance2": "^2.13.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

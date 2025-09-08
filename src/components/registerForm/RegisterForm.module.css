@@ -1,0 +1,59 @@
+.form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.field label {
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.field input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.checkboxField {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #1e1e2f;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submitBtn:hover {
+  background: #2563eb;
+}

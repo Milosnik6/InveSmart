@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 480px;
+  background: #fff;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.reload {
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.valueBox {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.valueLabel {
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.valueNumber {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.formRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.button {
+  padding: 8px 12px;
+  border: 1px solid #111827;
+  background: #111827;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.error {
+  color: #b91c1c;
+  margin-top: 10px;
+}
+
+.hint {
+  color: #6b7280;
+  font-size: 12px;
+  margin-top: 10px;
+}

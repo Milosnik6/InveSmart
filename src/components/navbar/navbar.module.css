@@ -1,0 +1,81 @@
+.navbar {
+  background-color: #1e1e2f;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.brand {
+  color: #e5e7eb;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  color: #ffffff;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  color: #bbdefb;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.active {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.header {
+  color: white;
+}
+
+.account {
+  position: absolute;
+  right: 0;
+  top: 73px;
+  background-color: #1e1e2f;
+  color: #ffffff;
+  width: 150px;
+  height: 200px;
+  z-index: 111;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.account button {
+  all: unset;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  border: 1px solid white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.showaccount {
+  display: flex;
+}
+
+a {
+  all: unset;
+}

@@ -1,0 +1,79 @@
+.chartBox {
+  width: 100%;
+  height: 420px;
+  border: 1px dashed #e5e7eb;
+  border-radius: 8px;
+}
+
+.info {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.addBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  min-width: 240px;
+}
+
+.button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+}
+
+.symbols {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.symbolTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  font-size: 13px;
+}
+
+.removeBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.selects {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
