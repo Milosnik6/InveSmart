@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Wallet.module.css";
 import axios from "axios";
 
-// Jeśli nie używasz proxy Vite, wpisz pełny adres:
+
 const API_BASE = "http://localhost:5000";
 
 export default function Wallet() {

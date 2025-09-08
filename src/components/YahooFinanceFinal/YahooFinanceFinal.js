@@ -18,8 +18,8 @@ import {
 import styles from "./YahooFinanceFinal.module.css";
 import { IoMdClose } from "react-icons/io";
 
-/** Używamy proxy Vite: /api → http://localhost:5000 (patrz vite.config.js) */
-const API_BASE = "http://localhost:5000"; // zostaw pusty, jeśli masz proxy
+
+const API_BASE = "http://localhost:5000"; 
 const DEFAULT_SYMBOLS = ["AAPL", "MSFT", "^GSPC", "^WIG20"];
 const DEFAULT_RANGE = "5d";
 const DEFAULT_INTERVAL = "5m";
@@ -71,7 +71,7 @@ async function fetchChart(symbol, range, interval) {
   return Array.isArray(json) ? json : [];
 }
 
-/** Szybkie i bezpieczne scalanie po time */
+
 function mergeByTime(seriesMap) {
   const timeSet = new Set();
   const maps = {};
@@ -118,12 +118,12 @@ export default function YahooFinanceFinal() {
   const boxRef = useRef(null);
   const inputRef = useRef(null);
 
-  // dopasuj interwał do wybranego zakresu
+  
   useEffect(() => {
     const allowed =
       ALLOWED_INTERVALS[range] || ALLOWED_INTERVALS[DEFAULT_RANGE];
     if (!allowed.includes(interval)) setIntervalVal(allowed[0]);
-  }, [range]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [range]); 
 
   const popular = useMemo(
     () => [
@@ -192,7 +192,7 @@ export default function YahooFinanceFinal() {
     setSymbols((prev) => (prev.includes(sym) ? prev : [...prev, sym]));
     setInput("");
     setOpen(false);
-    // jeśli chcesz od razu wywołać refresh(), zrób to tutaj
+   
   };
   const onInputKeyDown = (e) => {
     if (!open && (e.key === "ArrowDown" || e.key === "Enter")) setOpen(true);

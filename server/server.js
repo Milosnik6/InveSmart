@@ -1,12 +1,9 @@
-// Prosty serwer Node.js + Express
-// uruchom: npm run dev (nodemon) lub npm start
-
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
 const yf = require("yahoo-finance2").default;
-const connection = require("./db"); // mysql2/promise pool
+const connection = require("./db"); 
 
 dotenv.config();
 
@@ -16,11 +13,11 @@ const PORT = process.env.PORT || 5000;
 // ----- Middleware -----
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://127.0.0.1:3000"], // dopasuj do frontu
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000"], 
   })
 );
-app.use(express.json()); // JSON body parser
-app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
 
 // ===== Helpers =====
 function isValidEmail(email) {
@@ -30,7 +27,6 @@ function isValidEmail(email) {
 // ===== Rejestracja =====
 app.post("/register", async (req, res) => {
   try {
-    // obsłuż obie formy: { form: {...} } albo płaski obiekt
     const payload = req.body?.form ?? req.body;
     const { firstName, lastName, email, password, repeatPassword } = payload;
     if (!firstName || !lastName || !email || !password || !repeatPassword) {
@@ -287,7 +283,7 @@ app.get("/api/yf/search", async (req, res) => {
     const q = (req.query.q || "").trim();
     const r = await yf.search(q, { quotesCount: 50, newsCount: 0 });
     const items = (r?.quotes || [])
-      .filter((x) => x?.symbol && !x.symbol.includes("=")) // odfiltruj nietypowe instrumenty jeśli chcesz
+      .filter((x) => x?.symbol && !x.symbol.includes("="))
       .map((x) => ({
         symbol: x.symbol,
         name: x.shortname || x.longname || x.symbol,

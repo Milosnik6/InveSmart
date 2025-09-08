@@ -4,12 +4,12 @@ import {
 } from "recharts";
 import styles from "./YahooFinanceDemo.module.css";
 
-/* ===== DEMO CONFIG (NA SZTYWNO) ===== */
-const DEFAULT_SYMBOLS = ["^WIG20"];   // tylko WIG20
-const FIXED_RANGE = "1d";             // ostatnie 24h
-const FIXED_INTERVAL = "15m";         // interwał 15 minut
 
-/* ===== HELPERS ===== */
+const DEFAULT_SYMBOLS = ["^WIG20"];   
+const FIXED_RANGE = "1d";             
+const FIXED_INTERVAL = "15m";        
+
+
 function seedFromString(s) {
   let h = 2166136261 >>> 0;
   for (let i = 0; i < s.length; i++) {
@@ -35,7 +35,7 @@ function daysForRange(range) {
   return map[range] ?? 1;
 }
 
-// generuje pseudo-rynkową serię (random walk + łagodny trend)
+
 function generateSeries(symbol, range = "1d", interval = "15m") {
   const days = daysForRange(range);
   let stepMin = minutesForInterval(interval);
@@ -43,27 +43,27 @@ function generateSeries(symbol, range = "1d", interval = "15m") {
   const points = [];
   const now = Date.now();
   const start = now - days * 24 * 60 * 60 * 1000;
-  const base = 2000; // przybliżony poziom WIG20 (dla dema to tylko start)
+  const base = 2000; 
   const prng = rng(seedFromString(symbol + range + interval));
   let price = base;
 
   for (let t = start; t <= now; t += stepMin * 60 * 1000) {
     const dt = new Date(t);
     const h = dt.getHours(), m = dt.getMinutes();
-    const isIntraday = true; // dla 1d traktujemy jak intraday
+    const isIntraday = true; 
 
     if (isIntraday) {
-      // weekendy pomijamy
+      
       const day = dt.getDay();
       if (day === 0 || day === 6) continue;
-      // sesja GPW (orientacyjnie 09:00–17:00 CET)
+      
       const inRTH = (h >= 9 && h <= 17);
-      // poza sesją przerzedzamy (co 2h)
+      
       if (!inRTH && (h % 2 !== 0 || m !== 0)) continue;
     }
 
-    const drift = (prng() - 0.5) * 1.5;  // drobny dryf
-    const noise = (prng() - 0.5) * 6.0;  // szum
+    const drift = (prng() - 0.5) * 1.5;  
+    const noise = (prng() - 0.5) * 6.0;  
     const trend = Math.sin((t - start) / (1000 * 60 * 60) * Math.PI * 0.25) * 3.0;
 
     price = Math.max(1, price + drift + noise + trend);
@@ -92,7 +92,7 @@ function mergeByTime(seriesMap) {
 
 const COLORS = ["#2563eb", "#16a34a", "#ef4444", "#a855f7", "#f59e0b", "#06b6d4"];
 
-/* ===== MAIN (DEMO: WIG20 24H) ===== */
+
 export default function YahooFinanceDemo() {
   const [symbols] = useState(DEFAULT_SYMBOLS);
   const [data, setData] = useState([]);
@@ -109,7 +109,7 @@ export default function YahooFinanceDemo() {
 
   useEffect(() => {
     refresh();
-    const id = setInterval(refresh, 60_000); // odśwież demo co 60s
+    const id = setInterval(refresh, 60_000); 
     return () => clearInterval(id);
   }, [refresh]);
 

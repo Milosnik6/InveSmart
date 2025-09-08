@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import styles from "./Pointers.module.css";
 
-/** Jeśli nie używasz proxy Vite, wstaw pełny adres backendu */
+
 const API_BASE = "http://localhost:5000";
 
-/** Bezpieczne pobranie serii */
+
 async function fetchSeries(symbol, range, interval) {
   const params = new URLSearchParams({ symbol, range, interval });
   const res = await fetch(`${API_BASE}/api/yf/chart?${params.toString()}`);
@@ -15,9 +15,9 @@ async function fetchSeries(symbol, range, interval) {
   return Array.isArray(json) ? json : [];
 }
 
-/** złączenie po czasie (tylko wspólne punkty) */
+
 function mergeEqualWeight(seriesMap) {
-  // mapy: symbol -> Map(time -> close)
+  
   const maps = {};
   const timeCount = new Map();
 
@@ -35,7 +35,7 @@ function mergeEqualWeight(seriesMap) {
   const symbols = Object.keys(maps);
   if (symbols.length === 0) return [];
 
-  // tylko czasy, gdzie mamy dane dla wszystkich symboli (equal-weight)
+  
   const times = Array.from(timeCount.entries())
     .filter(([, cnt]) => cnt === symbols.length)
     .map(([t]) => t)
@@ -47,17 +47,17 @@ function mergeEqualWeight(seriesMap) {
     symbols.forEach((sym) => {
       sum += maps[sym].get(t);
     });
-    row.close = sum / symbols.length; // średnia cena jako proxy portfela równoważonego
+    row.close = sum / symbols.length; /
     return row;
   });
 }
 
-/** obliczenie metryk: zwrot skumulowany, ryzyko (σ), Sharpe */
+
 function computeMetrics(series) {
   if (!Array.isArray(series) || series.length < 2) {
     return { ret: 0, risk: 0, sharpe: 0 };
   }
-  // proste stopy zwrotu z cen portfela
+  
   const rets = [];
   for (let i = 1; i < series.length; i++) {
     const p0 = series[i - 1].close;
@@ -76,7 +76,7 @@ function computeMetrics(series) {
 
   const cumulative = series.at(-1).close / series[0].close - 1;
 
-  // Sharpe z Rf = 0 w jednostce interwału (bez annualizacji)
+  
   const sharpe = stdev > 0 ? mean / stdev : 0;
 
   return { ret: cumulative, risk: stdev, sharpe };
@@ -97,7 +97,7 @@ export default function Pointers({ range = "5d", interval = "1d" }) {
         setErr("");
         setLoading(true);
         const map = {};
-        // pobierz serie równolegle
+        
         await Promise.all(
           (symbols || []).map(async (s) => {
             try {
@@ -120,7 +120,7 @@ export default function Pointers({ range = "5d", interval = "1d" }) {
     return () => {
       cancel = true;
     };
-  }, [symbols, time, interval]); // odśwież przy zmianie
+  }, [symbols, time, interval]); 
 
   const pct = (x) => `${(x * 100).toFixed(2)}%`;
 

@@ -17,13 +17,13 @@ export default function Settings() {
   const [id] = useState(user.id);
 
   let navigate = useNavigate();
-  // zmiana hasła
+ 
   const [pwd, setPwd] = useState({
     newPassword: "",
     confirmPassword: "",
   });
 
-  // usunięcie konta
+  
   const [confirmDelete, setConfirmDelete] = useState("");
   console.log(name);
 
@@ -53,7 +53,7 @@ export default function Settings() {
     }
   };
 
-  // zmiana hasła
+  
   const changePassword = async (e) => {
     e.preventDefault();
     setErr("");
@@ -82,7 +82,7 @@ export default function Settings() {
     }
   };
 
-  // usunięcie konta
+  
   const deleteAccount = async (e) => {
     e.preventDefault();
     setErr("");
